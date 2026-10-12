@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ResiliLink: Disaster alerts and green micro-loans for farmers</title>
+<meta name="description" content="ResiliLink sends disaster early warnings and offers M-Pesa green micro-loans to farmers, including over USSD (*483#) with no internet needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF1E8; --ink:#16251E; --muted:#4D5F55;
+  --river:#2D6EA3; --alert:#E3A21A; --leaf:#2F7A4F; --soil:#5A4535; --line:#C9D3C4;
+  --display:'Fraunces',Georgia,serif; --body:'Instrument Sans',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#0F1914;--ink:#E7EFE4;--muted:#9DB0A3;--line:#243528;--river:#6AAEE0;--leaf:#6FC48F}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--alert);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+.logo{font:800 1.4rem var(--display);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--river)}
+nav a{margin-left:1.25rem;text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding:3rem 0 4.5rem}
+h1{font:800 clamp(2.4rem,6vw,4rem)/1.04 var(--display);letter-spacing:-.02em;margin:0 0 1.25rem}
+.lead{font-size:1.2rem;color:var(--muted);max-width:34rem;margin:0 0 2rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--alert);border-color:var(--alert);color:#16251E}
+/* USSD phone: the one memorable element */
+.phone{background:#111;border-radius:2rem;padding:1.1rem;max-width:300px;margin:0 auto;box-shadow:0 0 0 3px var(--soil)}
+.screen{background:#D9E7C9;color:#14210F;border-radius:1rem;padding:1.1rem 1rem 1.3rem;font:500 .95rem/1.5 ui-monospace,Menlo,Consolas,monospace;min-height:290px}
+.screen b{display:block;margin-bottom:.6rem}
+.screen ol{list-style:none;margin:0;padding:0}
+.screen li{padding:.15rem 0}
+.dial{display:flex;justify-content:space-between;margin-top:1.1rem;padding-top:.7rem;border-top:1px dashed #14210F66;font-size:.85rem}
+.caret{display:inline-block;width:.55em;height:1em;background:#14210F;vertical-align:-.15em;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(1.7rem,4vw,2.4rem)/1.15 var(--display);margin:0 0 1.75rem;letter-spacing:-.01em}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:.5rem;overflow:hidden}
+.step{padding:1.5rem}
+.step+.step{border-left:1px solid var(--line)}
+.step h3{font:800 1.25rem var(--display);margin:0 0 .5rem}
+.step p{margin:0;color:var(--muted)}
+.step:nth-child(1) h3{color:var(--alert)}
+.step:nth-child(2) h3{color:var(--river)}
+.step:nth-child(3) h3{color:var(--leaf)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.two h3{font:800 1.2rem var(--display);margin:0 0 .5rem}
+.two p{margin:0;color:var(--muted)}
+.team{display:flex;gap:2.5rem;flex-wrap:wrap}
+.team div strong{display:block;font-family:var(--display);font-size:1.15rem}
+.team div span{color:var(--muted)}
+footer{padding:2.5rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+@media (max-width:760px){
+  .hero,.two{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .step+.step{border-left:0;border-top:1px solid var(--line)}
+  nav a{margin-left:.9rem}
+}
+@media (prefers-reduced-motion:reduce){.caret{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">Resili<span>Link</span></a>
+    <nav><a href="#how">How it works</a><a href="#ussd">USSD</a><a href="#team">Team</a></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Warnings that reach farmers before the weather does.</h1>
+        <p class="lead">ResiliLink sends disaster early alerts and offers green micro-loans through M-Pesa, so farmers can prepare, recover and farm in ways that last.</p>
+        <div class="btns">
+          <a class="btn main" href="#how">See how it works</a>
+          <a class="btn" href="#ussd">Dial *483#</a>
+        </div>
+      </div>
+      <div class="phone" role="img" aria-label="Phone screen showing the ResiliLink USSD menu">
+        <div class="screen">
+          <b>ResiliLink</b>
+          <ol>
+            <li>1. Alerts for my area</li>
+            <li>2. Apply for a green loan</li>
+            <li>3. Repay via M-Pesa</li>
+            <li>4. Language</li>
+          </ol>
+          <div class="dial"><span>*483#</span><span>Reply: <i class="caret"></i></span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="how">
+      <h2>From warning to recovery</h2>
+      <div class="flow">
+        <div class="step"><h3>Warn</h3><p>Early warnings about floods, drought and other hazards reach farmers in their area.</p></div>
+        <div class="step"><h3>Fund</h3><p>Farmers apply for a green micro-loan and receive it through M-Pesa.</p></div>
+        <div class="step"><h3>Repay</h3><p>Repayments go back through M-Pesa, so the cycle stays simple and traceable.</p></div>
+      </div>
+    </section>
+
+    <section id="ussd">
+      <h2>Built for phones without internet</h2>
+      <div class="two">
+        <div><h3>USSD on *483#</h3><p>Any phone can reach ResiliLink. Dial the code, pick from the menu, and get alerts or apply for a loan with no data and no app.</p></div>
+        <div><h3>Green by design</h3><p>Loans are meant for climate-smart choices that help farmers withstand the next shock, not only recover from the last one.</p></div>
+      </div>
+    </section>
+
+    <section id="team">
+      <h2>The team</h2>
+      <div class="team">
+        <div><strong>Mutiso</strong><span>Lead developer</span></div>
+        <div><strong>Evans</strong><span>Team member</span></div>
+        <div><strong>Blessings</strong><span>Team member</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Built for the IESS 2026 hackathon. Nairobi, Kenya.</footer>
+</div>
+</body>
+</html>
